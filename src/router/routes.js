@@ -11,7 +11,7 @@ import ApiInterface from '../components/apiInterface/ApiInterface.vue'
 
 export default [{
         path: '/',
-        redirect: '/login'
+        redirect: '/home'
     },
     {
         path: '/login',

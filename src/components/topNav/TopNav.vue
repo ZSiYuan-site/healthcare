@@ -15,20 +15,36 @@
         <div><span class="iconfont icon-facebookfacebook11"></span></div>
         <div class="line"></div>
         <div><span class="iconfont icon-tuitetwitter43"></span></div>
-        <div class="login_box" @click="login">注册/登录</div>
+        <div class="login_box" @click="login">
+          <div class="down_board">
+            <ul>
+              <li><a href="#">退出登录</a></li>
+            </ul>
+          </div>
+          {{ username ? username : "登录/注册" }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "TopNav",
-  methods:{
-    login(){
-      this.$router.push('/login')
-    }
-  }
+  data() {
+    return {};
+  },
+  methods: {
+    login() {
+      this.$router.push("/login");
+    },
+  },
+  computed: {
+    ...mapState({
+      username: (state) => state.user.userInfo.username,
+    }),
+  },
 };
 </script>
 
@@ -77,6 +93,21 @@ export default {
         color: #ffffff;
         font-family: Jost-SemiBold;
         margin-left: 15px;
+        position: relative;
+        // 用户的下拉白板---展示
+        .down_board {
+          display: none;
+          color: black;
+          position: absolute;
+          width: 160px;
+          height: 100px;
+          background: #fff;
+          top: 55px;
+          right: 0px;
+        }
+        &:hover .down_board {
+          display: block;
+        }
       }
     }
   }

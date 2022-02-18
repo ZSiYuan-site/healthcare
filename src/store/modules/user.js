@@ -1,3 +1,5 @@
+import router from '../../router'
+
 import {
     login
 } from '../../api/index'
@@ -38,7 +40,8 @@ const actions = {
             delete result.data.token
             // 保存用户信息到user模块的vuex中
             commit(SAVE_USER_INFO, result.data)
-            console.log('登录成功了')
+            // 跳转到首页
+            router.push('/home')
         } else {
             console.log('登录失败了')
         }
